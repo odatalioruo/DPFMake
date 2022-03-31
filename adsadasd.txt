@@ -1,0 +1,159 @@
+// playground requires you to assign document definition to a variable called dd
+
+var dd = {
+      pageMargins: [ 30, 30,30,30 ],
+      pageSize: {
+        width: 620,
+        height: 877
+      },
+	 content: [
+    
+        {
+            style: 'tableBranch',
+            table: {
+                 widths:['*'], heights:[80],
+                body: [
+                       
+                       [ {	margin: [15,15,15,15], image:'sampleImage.jpg', text:'testando kekekkekek', italics: true}]
+                    ], 
+            }
+        } ,
+       
+        {
+          style: 'tableBranch',
+          table: {
+              widths:['*','auto','auto'],
+              heights:[10,35,35],
+              body:[    
+                        [{colSpan:3, text:'Identificacao da Nota de Débito', fontSize:8.5, bold:true, alignment: 'center'},{},''],
+                        [
+                            {text:
+                                [
+                                    {text: 'Natureza da Operação\n', fontSize:8},
+                                    {text: 'REEMBOLSO DE DESPESA', bold:true, fontSize:9}]},
+                                    {rowSpan:2, margin: [20, 20, 20,0], text:[{text: 'nota de débito\n', fontSize: 8}]},
+                                    {rowSpan:2, alignment:'center',  margin: [20, 20, 20,0], text:[{text:'NOTA Nº\n', fontSize:8},{text:'87638', bold:true, fontSize:20}]}],
+                        ['','',''],
+                        
+                   ]
+          }
+        },
+        {
+            style:'tableBranch',
+            table:{
+                widths:[130.75,130.75,130.75,130.75],
+                // heights:[10,20,20,20],
+                body:[
+                        [{colSpan:4, fontSize:8.5, bold:true, alignment: 'center', text:'Dados do Tomador de Serviços'},'','',''],
+                        [{colSpan: 1, text: [{text: 'CNPJ/CPF\n', fontSize:8}, {text:'02252559545', fontSize:8}]},{colSpan: 3, text: [{text:'Razão social\n', fontSize:8},{text:'MUNICIPIO DE BARRA DO GARÇAS', fontSize:10}]},''],
+                        [{text: [{text: 'Telefone\n', fontSize:8},{text:'()', fontSize:9}]},{text: [{text: 'e-mail\n', fontSize:8},{text:'', fontSize:9}]},{colSpan:2, text: [{text: 'Endereço\n', fontSize:8},{text:'Rua Carajas', fontSize:9}]}, ,],
+                        [{ colSpan:1, text:[{text: 'Complemento\n', fontSize:8}]},{ colSpan: 1, text:[{text: 'Bairro\n', fontSize:8},{text:'Rua Carajas', fontSize:9}]},{text: [{text: 'CEP\n', fontSize:8},{ text:'7860000', fontSize:9}]},{text: [{text: 'Cidade/UF\n', fontSize:8},{text:'São José do Vale do Rio Preto MT', fontSize:9}]}]
+                    ]
+            }
+        },
+        {
+            style:'tableBranch',
+            table:{
+                widths:['*','auto','auto'], heights:[10,20],
+                body: [//[{text: 'Período\n', fontSize:8},{text:'De 14/03/2022 a 21/03/2022', fontSize:9}]
+                        [{colSpan:3, text:'Referências',fontSize:8,bold:true,alignment:'center'},'',''],
+                        [{text: [{text: 'Contrato\n', fontSize:8},{text:'354/2021', fontSize:9}]},{text: [{text: 'Período\n', fontSize:8},{text:'De 14/03/2022 a 21/03/2022', fontSize:9}]},{text: [{text: 'Observações\n', fontSize:8},{text:'tkjriuf9discjfhgufidoskgfhuiofdplkgfjhirofdpklcfgbhnjigtofpdlsgkrtjioefkdlcmgnbjhigkofl,v', fontSize:9}]}]
+                      ]
+            }
+        },
+        {
+            style:'tableBranch',
+            table:{
+                widths:['*','auto'],
+                heights:[10,10],
+                body:[
+                        [
+                          {colSpan:2, text: 'Descrição dos Serviços Prestado', bold:true, fontSize:8, alignment:'center'},''
+                        ],
+                        [
+                           {text: 'Itens', bold:true, fontSize:8, alignment:'center'},{text:'valor total', bold:true, fontSize:8, alignment:'center', margin: [20, 0, 20,0],}
+                        ] ,
+                        [
+                           {text: 'REEMBOLSO DE INSUMOS DE CONSTRUCAO CIVIL', fontSize:9, alignment:'center'},{text:'R$ 683,35', fontSize:9, alignment:'center'}
+                        ]
+                    ],
+            }
+        },
+        {
+
+            style:'tableBranch',
+            table:{
+                widths:[70.85,70.85,70.85,70.85,70.85,70.85,70.85],
+                heights:[10,15,40,20],
+                body:[
+                       [{colSpan:7, text: 'Informações Complementares', bold:true, fontSize:8, alignment:'center'},'','','','','',''],
+                       
+                        
+                             [{colSpan:3,text:[{text: 'Responsável\n', bold:true, fontSize:8.5,},{text: 'LUIS FELIPE', fontSize:9, }]},
+                           'a',
+                           'a',
+                            {colSpan:2,text:[{text: 'E-mail\n', fontSize:8.5,},{text: 'luis@abrange.app', fontSize:10,}]},
+                           'a',
+                           {  margin: 10, rowSpan:2, colSpan:2,text:[{text: 'Dados para pagamento\n', bold:true, fontSize:8.5, alignment:'center'},{text: 'PANTANAL GESTAO E TECNOLOGIA LTDA\n SICREDI KJkdjlsdkjdskfj', fontSize:10, alignment:'center'}]},
+                           'a'
+                        ],
+                        [
+                        {colSpan:5, text: 'foda-se foda-se\n foda-se foda-se\n foda-se foda-se\n foda-se foda-se\n', fontSize:8.5, alignment:'center'},'a','a','a','a','a','a'
+                        ],
+                       //valor bruto
+                       [{colSpan:2, text:[{text: 'Valor bruto\n', fontSize:8,},{text: 'R$ 683,35', fontSize:9, alignment:'right'}]},'',
+                       {text:[{text: 'Acréscimo\n', fontSize:8,},{text: 'R$ 0,00', fontSize:9, alignment:'right'}]},
+                       {text:[{text: 'Desconto\n',  fontSize:8,},{text: 'R$ 0,00', fontSize:9, alignment:'right'}]},
+                       {colSpan:3,text:[{text: 'Valor Liquido\n', fontSize:8,},{bold: true,text: 'R$ 683,35', fontSize:10, alignment:'right'}]},'','']
+                    ]
+            }
+        },
+        {
+            style:'tableBranch',
+            table:{
+                widths:[70.85,70.85,70.85,70.85,70.85,70.85,70.85],
+                heights:[20],
+                body:[
+                        [{colSpan:4,text:[{text: 'RECEBIDO POR\n', bold:true, fontSize:8,},{text: '', fontSize:9, alignment:'left'}]},'','','',
+                       {text:[{text: 'DATA\n', bold:true, fontSize:8,},{text: '', bold:true, fontSize:9, alignment:'left'}]},
+                       {colSpan:2,text:[{text: 'Nº NOTA DE DÉBITO\n', bold:true, fontSize:8,},{text: '87638', fontSize:9, alignment:'left'}]},''
+                    ]
+                    ]
+                
+            }
+        }
+	 ],
+
+	styles: {
+
+		header: {
+			fontSize: 19,
+			bold: true,
+			margin: [0, 0, 0, 10]
+		},
+		subheader: {
+			fontSize: 16,
+			bold: true,
+			margin: [0, 10, 0, 5]
+		},
+		tableBranch: {
+			margin: [0, 0, 0, 5]
+		},
+		tableapre: {
+			margin: [0, 0, 0, 0],
+			alignment: 'center',
+			fontSize: 10,
+			bold: true
+		},
+		tableHeader: {
+			bold: true,
+			fontSize: 13,
+			color: 'black'
+		},
+
+	},
+	defaultStyle: {
+		//s alignment: 'center'
+	}
+	
+}

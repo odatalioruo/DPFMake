@@ -1,0 +1,71 @@
+// playground requires you to assign document definition to a variable called dd
+
+var dd = {
+    pageMargins: [20,20,20,20],
+	content: [
+		    {
+		       style:'guilhox',
+		       table:{
+		            widths:['*','*'],
+		            body:[
+		                   [{colSpan:2,text:'Relatório - Nota de débito 87841', fillColor:'black',color:'white',style:'subheader'},{}],
+		                   [{text:'ORÇAMENTOS: 8',style:'header'},{text:'VALOR: R$23.797,30', style:'header'}]
+		                ],
+		       }
+		    },
+		    {
+		        table:{
+		            widths:[357,'*'],
+		            body:[
+		                [{text:'FORNECEDOR',style:'header'},{text:'VALOR TOTAL',style:'header'}],
+		                [{text:'LUBRIFICANTES XAVANTINA',style:'header'},{text:'R$1087.00',style:'header'}],
+		                [{text:'FORTE DIESEL',style:'header'},{text:'R$18.904.00',style:'header'}],
+		                [{text:'MECÂNICA UNIVERSAL',style:'header'},{text:'3.806',style:'header'}],
+		            ],
+		        }
+		    },
+		    {
+		        style:'guilhox',
+		       table:{
+		            widths:['*','*','*','*','*','*','*','*','*','auto'],
+		            heights:[15,15,20,20,20],
+		            body:[
+		                   [{colSpan:10,text:'asdsa', fillColor:'black',color:'white',style:'subheader'},'','','','','','','','',''],
+		                   [{colSpan:10,text:'ORÇ.60330 - QFC5101 - RENAULT RENAULT MASTER \n LUBRIFICANTES XAVANTINA',style:'header'},'','','','','','','','',''],
+		                   [{style:'header',text:'Hora'},{style:'header',text:'Tipo'},{colSpan:3,style:'header',text:'Item/Descrição'},'','',{style:'header',text:'Marca'},{style:'header',text:'Qtd.'},{style:'header',text:'Valor Un.'},{style:'header',text:'Desc.'},{style:'header',text:'Valor'}],
+		                   [{text:'11:11:11', style:'texto'},{text:'PEÇAS', style:'texto'},{colSpan:3,text:'ALGUMA COISA', style:'texto'},'','',{text:'RAINHA DAS SETE', style:'texto'},{text:'1 un', style:'texto'},{text:'R$ 180,00', style:'texto'},{text:'R$ 0,00', style:'texto'},{text:'R$ 180,00', style:'texto'}],
+		                   [{colSpan:9,text:'TOTAL DO ORÇAMENTO:',alignment:'center'},'','','','','','','','',{text:'R$ 430,00',style:'texto'}]
+		                ],
+		       }
+		    },
+		    {},
+		    {},
+	         ],
+	styles: {
+		header: {
+			fontSize: 11,
+			bold: true,
+			alignment:'center',
+			margin:1
+		},
+		subheader: {
+			fontSize: 16,
+			bold: true,
+			alignment:'center',
+			margin:1
+		},
+		quote: {
+			italics: true
+		},
+		small: {
+			fontSize: 8
+		},
+		guilhox:{
+		    margin:[0,5,0,10]
+		},
+		texto:{
+		    fontSize:9
+		}
+	}
+	
+}
