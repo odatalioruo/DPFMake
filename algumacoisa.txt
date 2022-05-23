@@ -1,0 +1,300 @@
+var lista = [
+    {
+      id: 123123,
+      secretariaId: 10,
+      secretariaLabel: 'SAUDE',
+      departamentoId: 300,
+      departamentoLabel: 'Posto de saude do meu bairro',
+      valor: 1000,
+      valorPago: 500
+    },
+    {
+      id: 123125,
+      secretariaId: 11,
+      secretariaLabel: 'Obras',
+      departamentoId: 301,
+      departamentoLabel: 'Consstrucao 1',
+      valor: 1000,
+      valorPago: 500
+    },
+    {
+      id: 123123,
+      secretariaId: 11,
+      secretariaLabel: 'Obras',
+      departamentoId: 302,
+      departamentoLabel: 'Construcao 2',
+      valor: 1000,
+      valorPago: 500
+    },
+    {
+      id: 123125,
+      secretariaId: 12,
+      secretariaLabel: 'gabinete do prefeito',
+      departamentoId: 306,
+      departamentoLabel: 'Departamento de LGBT',
+      valor: 1000,
+      valorPago: 500
+    },
+    {
+      id: 123124,
+      secretariaId: 10,
+      secretariaLabel: 'SAUDE',
+      departamentoId: 300,
+      departamentoLabel: 'Posto de saude do meu bairro',
+      valor: 1000,
+      valorPago: 500
+    },
+  
+    {
+      id: 123124,
+      secretariaId: 12,
+      secretariaLabel: 'gabinete do prefeito',
+      departamentoId: 303,
+      departamentoLabel: 'joao matou samira',
+      valor: 1000,
+      valorPago: 500
+    }
+  ]
+  //
+  var taxa = [
+  {
+    id: 123123,
+    secretariaId: 10,
+    secretariaLabel: 'SAUDE',
+    departamentoId: 300,
+    departamentoLabel: 'Posto de saude do meu bairro',
+    valor: 200,
+    valorPago: 11
+  },
+  {
+    id: 123125,
+    secretariaId: 11,
+    secretariaLabel: 'Obras',
+    departamentoId: 301,
+    departamentoLabel: 'Consstrucao 1',
+    valor: 200,
+    valorPago: 11
+  },
+  {
+    id: 123123,
+    secretariaId: 11,
+    secretariaLabel: 'Obras',
+    departamentoId: 302,
+    departamentoLabel: 'Construcao 2',
+    valor: 200,
+    valorPago: 11
+  },
+  {
+    id: 123125,
+    secretariaId: 12,
+    secretariaLabel: 'gabinete do prefeito',
+    departamentoId: 306,
+    departamentoLabel: 'Departamento de LGBT',
+    valor: 200,
+    valorPago: 11
+  },
+  {
+    id: 123124,
+    secretariaId: 10,
+    secretariaLabel: 'SAUDE',
+    departamentoId: 300,
+    departamentoLabel: 'Posto de saude do meu bairro',
+    valor: 200,
+    valorPago: 11
+  },
+
+]
+  
+  const objH = {}
+    const objJ = {}
+   //minha visão é organizar as secretarias de forma em que eu tenha um objeto que só tenha o que tem dentro da secretaria.
+   //depois da secretaria eu quero um objeto que só tenha o que tem dentro do departamento
+   
+    lista.forEach(el => {
+        if (typeof objH[el.secretariaId] === 'undefined') {
+          objH[el.secretariaId] = {
+            secretariaLabel: el.secretariaLabel,
+            departamentos: {}
+          }
+        }
+        if (typeof objH[el.secretariaId].departamentos[el.departamentoId] === 'undefined') {
+          objH[el.secretariaId].departamentos[el.departamentoId] = []
+        }
+            objH[el.secretariaId].departamentos[el.departamentoId].push(el)
+        })
+  
+   secretariaRowsSpan = {}
+   departamentoRowsSpan = {}
+  for (const key in objH) {
+    const secretaria = objH[key];
+  //  console.log(secretaria, 'laksldksad')
+    if (Object.prototype.hasOwnProperty.call(objH, key)) {
+      secretariaRowsSpan[key] = 0
+  
+      for (const key2 in secretaria.departamentos) {
+        departamentoRowsSpan[key2] = 0
+        if (Object.prototype.hasOwnProperty.call(secretaria.departamentos, key2)) {
+          const departamento = secretaria.departamentos[key2];
+          
+          for (let i = 0; i < departamento.length; i++) {
+            const item = departamento[i]; 
+            secretariaRowsSpan[key]++
+            departamentoRowsSpan[key2]++
+          }
+        }
+      }
+    }
+  } 
+  //função 1 da taxas
+
+
+taxa.forEach(ol => {
+      if (typeof objJ[ol.secretariaId] === 'undefined') {
+        objJ[ol.secretariaId] = {
+          secretariaLabel: ol.secretariaLabel,
+          departamentos: {}
+        }
+      }
+      if (typeof objJ[ol.secretariaId].departamentos[ol.departamentoId] === 'undefined') {
+        objJ[ol.secretariaId].departamentos[ol.departamentoId] = []
+      }
+          objJ[ol.secretariaId].departamentos[ol.departamentoId].push(ol)
+      })
+
+ secretariaRowsSpan = {}
+ departamentoRowsSpan = {}
+for (const key in objJ) {
+  const secretaria = objJ[key];
+//  console.log(secretaria, 'laksldksad')
+  if (Object.prototype.hasOwnProperty.call(objJ, key)) {
+    secretariaRowsSpan[key] = 0
+
+    for (const key2 in secretaria.departamentos) {
+      departamentoRowsSpan[key2] = 0
+      if (Object.prototype.hasOwnProperty.call(secretaria.departamentos, key2)) {
+        const departamento = secretaria.departamentos[key2];
+        
+        for (let i = 0; i < departamento.length; i++) {
+          const item = departamento[i]; 
+          secretariaRowsSpan[key]++
+          departamentoRowsSpan[key2]++
+        }
+      }
+    }
+  }
+} 
+
+// fim função taxas
+
+  //console.log(secretariaRowsSpan)
+  //console.log(departamentoRowsSpan)
+  //console.log('a.',objJ)
+
+ const data = [
+
+        [{text:'Nome da prefeitura', colSpan:5, style:'header', fillColor: '#aaa'},'','','',''],
+        [{text:'FATURAS EM ABERTO(REEMBOLSO)', colSpan:5, style:'header', fillColor:'#888'},'','','',''],
+        [{text:'ITEM', style:'header', fillColor:'#888'},{text:'DEPTO / SEC', style:'header', fillColor:'#888'},{text:'NF Nº', style:'header', fillColor:'#888'},{text:'VLR NF', style:'header', fillColor:'#888'},{text:'TOTAL EM ABERTO', style:'header', fillColor:'#888'}],
+     ]
+     
+const datt = [
+    
+     //[{text:'', colSpan:5, style:'header', fillColor: '#aaa'},'','','',''],
+        [{text:'FATURAS EM ABERTO(TAXA)', colSpan:5, style:'header', fillColor:'#888'},'','','',''],
+        [{text:'ITEM', style:'header', fillColor:'#888'},{text:'DEPTO / SEC', style:'header', fillColor:'#888'},{text:'NF Nº', style:'header', fillColor:'#888'},{text:'VLR NF', style:'header', fillColor:'#888'},{text:'TOTAL EM ABERTO', style:'header', fillColor:'#888'}],
+    ]
+ 
+ for(const sec in objH ){
+     const secData = []
+     for(const dep in objH[sec].departamentos){
+         depData = []
+         for(let i = 0; objH[sec].departamentos[dep].length > i ; i++){
+             const row = []
+             const el = objH[sec].departamentos[dep][i]
+            // console.log(el)
+             if(secData.length == 0 ) row.push({text:el.secretariaLabel, rowSpan:secretariaRowsSpan[sec], style:'header'})
+             else row.push('')
+             if(depData.length == 0) row.push({text:el.departamentoLabel, rowSpan:departamentoRowsSpan[dep], style:'header'})
+             else row.push('')
+             row.push(el.id)
+             row.push(el.valor)
+             row.push(el.valor-el.valorPago)
+             depData.push(row)
+           
+         }
+         secData.push(...depData)
+         //total por secretaria
+
+     }
+    
+     data.push(...secData)
+           
+     
+ }
+let total= 8000
+    data.push([{text:'TOTAL:',style:'header',fillColor:'#888', colSpan:4},'','','',{text:total , bold:true, fillColor:'#888'}])
+
+
+for(const sec in objJ ){
+  const secData = []
+  for(const dep in objJ[sec].departamentos){
+      depData = []
+      for(let i = 0; objJ[sec].departamentos[dep].length > i ; i++){
+          const row = []
+          const el = objJ[sec].departamentos[dep][i]
+          //console.log(el)
+          if(secData.length == 0 ) row.push({text:el.secretariaLabel, rowSpan:secretariaRowsSpan[sec], style:'header'})
+          else row.push('')
+          if(depData.length == 0) row.push({text:el.departamentoLabel, rowSpan:departamentoRowsSpan[dep], style:'header'})
+          else row.push('')
+          row.push(el.id)
+          row.push(el.valor)
+          row.push(el.valor-el.valorPago)
+          depData.push(row)
+      }
+      secData.push(...depData)
+
+  }
+  for(j = 0; j < lista.length; j++){ var aberto = null;
+          aberto = lista[j].valorPago*j
+      
+  }
+  datt.push(...secData)
+  
+  if(i = lista.length){
+      //console.log(aberto)
+    // data.push(['',{text:'TOTAL', colSpan:3, style:'header', fillColor: '#aaa'},'','',{text:aberto}]) 
+  }
+ //  [{text:'', colSpan:5, style:'header', fillColor: '#aaa'},'','','',''],
+}
+   datt.push([{text:'TOTAL:',style:'header',fillColor:'#888', colSpan:4},'','','',{text:total , bold:true, fillColor:'#888'}])
+  
+  
+  
+  
+  
+var dd = {
+	content: [
+		{   style: 'something',
+            table: {
+                widths: ["*","*","*","*","*"],
+                body:data 
+            }
+		},
+			{   style: 'something',
+            table: {
+                widths: ["*","*","*","*","*"],
+                body:datt 
+            }
+		}
+	],
+	styles:{
+	    header: {
+	        bold: true,
+	        alignment: 'center',
+	        fontSize: 10,
+	    }
+	}
+}
+
+
