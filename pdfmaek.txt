@@ -1,0 +1,111 @@
+var dados = [
+    {
+        credenciador: 'SAGA NEWS',
+        prefeitura: 'MUN AGUA BOA',
+        emAberto: 7777.7,
+        emAtraso: 1514.15,
+        diasVencidos:10
+    },
+        {
+        credenciador: 'SAGA NEWS',
+        prefeitura: 'MUN AGUA BaA',
+        emAberto: 7777.77,
+        emAtraso: 1514.15,
+        diasVencidos:11
+    },
+        {
+        credenciador: 'PANTANAL',
+        prefeitura: 'PREF MUN ALTO DA BOA VISTA',
+        emAberto: 7777.77,
+        emAtraso: 1514.15,
+        diasVencidos:10
+    },
+   {
+        credenciador: 'SEXO',
+        prefeitura: 'PREF MUN ALTO DA BOA VISTA',
+        emAberto: 151515.77,
+        emAtraso: 515.15,
+        diasVencidos:0
+    },
+    {
+        credenciador: 'SEXO2',
+        prefeitura: 'PREF MUN ALTO DA BOA VISTA',
+        emAberto: 1155.77,
+        emAtraso: 515.15,
+        diasVencidos:0
+    },
+    ] 
+
+
+
+var gtm = [
+        [{text:'GESTÃO TOTAL DE MANUTENÇÃO - FINANCEIRO',style:'header',colSpan:7},'','','','','',''],
+        [{text:"VALORES EM ABERTO - GTM", style:'VEAB', colSpan:3},'','',{text:'',border:[false, false, false, false]},{text:"VALORES EM ATRASO - GTM", style:'VEAT', colSpan:3},'',''],
+        [{text:"item",bold:true},{text:"clientes",bold:true},{text:"valor",bold:true},{text:'',border:[false, false, false, false]},{text:"clientes",bold:true},{text:"valor",bold:true},{text:"vencidos",bold:true}]
+    ]
+    
+ var objk = {} //nosso objeto
+    
+dados.forEach(el => {
+    if(typeof objk[el.credenciador] === 'undefined')
+    {
+            objk[el.credenciador] = {}
+    }
+    
+    if(typeof objk[el.credenciador].prefeitura === 'undefined'){
+            objk[el.credenciador].prefeitura = []
+         }
+    objk[el.credenciador].prefeitura.push(el)
+
+})
+
+
+let toab = 0
+let toat = 0
+
+for(let pre in objk){
+    gtm.push([{text:pre, style:'header', colSpan:7},'','','','','',''])
+    for(let sen in objk[pre]){
+        for(let k = 0; k < objk[pre].prefeitura.length; k++){
+            if(objk[pre].prefeitura[k].diasVencidos < 1){
+                toab =  toab+objk[pre].prefeitura[k].emAberto
+                toat =  toat+objk[pre].prefeitura[k].emAtraso
+                objk[pre].prefeitura[k].diasVencidos = '-'
+                objk[pre].prefeitura[k].emAtraso = '-'
+            }
+            gtm.push(['',{text:objk[pre].prefeitura[k].prefeitura,fontSize:9},{text:objk[pre].prefeitura[k].emAberto,fontSize:9},{text:'',border:[false, false, false, false]},{text:objk[pre].prefeitura[k].prefeitura,fontSize:9},{text:objk[pre].prefeitura[k].emAtraso,fontSize:9},{text:objk[pre].prefeitura[k].diasVencidos,fontSize:9,alignment:'center'}])
+        }
+       
+    } 
+ gtm.push([{text:'',border:[false, false, false, false], margin:5},{text:'',border:[false, false, false, false]},{text:'',border:[false, false, false, false]},{text:'',border:[false, false, false, false]},{text:'',border:[false, false, false, false]},{text:'',border:[false, false, false, false]},{text:'',border:[false, false, false, false]},])   
+}
+let totalaberto = toab.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+let totalatraso = toat.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+gtm.push([{text:'',border:[false, false, false, false]},{text:'',border:[false, false, false, false]},{text:'',border:[false, false, false, false]},{text:'',border:[false, false, false, false]},{text:'',border:[false, false, false, false]},{text:'',border:[false, false, false, false]},{text:'',border:[false, false, false, false]},])
+gtm.push([{text:"VALOR TOTAL EM ABERTO", alignment:'center', bold:true,colSpan:2,fontSize:9},'',{text:totalaberto,fontSize:9},{text:'',border:[false, false, false, false]},{text:"VALOR TOTAL EM ATRASO", alignment:'center', bold:true,fontSize:9},{text:totalatraso,bold:true,fontSize:9,colSpan:2, alignment:'center'},''])
+
+console.log(objk) 
+
+
+var dd = {
+     pageSize: 'A4',
+     pageOrientation: 'landscape',
+	content: [
+		{
+		    table:{
+		         widths:[30,228,75,35,'*',70,50],
+		        body:gtm
+		    }
+		}
+	],
+	styles:{
+	    header: {
+	        fontSize:9,
+	        bold:true,
+	        alignment:'center',
+	        fillColor:'#9ab'
+	    },
+	    VEAB:{fillColor:'#888',color:'#fff',alignment:'center',bold:true,fontSize:9},
+	    VEAT:{fillColor:'#555',color:'#fff',alignment:'center',bold:true,fontSize:9}
+	}
+}
