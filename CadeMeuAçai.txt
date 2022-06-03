@@ -191,6 +191,9 @@ for(ids in objO){
             
          ]
                     )
+    osOrcamentos.push(
+            [{text:'', border:[false, false, false, false]}] 
+    )
 }
  var map = 1
 for(let i = 0; i < osOrcamentos.length; i++){
